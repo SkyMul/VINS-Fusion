@@ -136,7 +136,13 @@ VINS-Fusion support several camera models (pinhole, mei, equidistant). You can u
 cd ~/catkin_ws/src/VINS-Fusion/camera_models/camera_calib_example/
 rosrun camera_models Calibrations -w 12 -h 8 -s 80 -i calibrationdata --camera-model pinhole
 ```
-
+### 6.3 Launch the camera
+Note that the rs_camera launch file needs to be placed in the realsense-ros package to be executed without any errors. 
+```
+    roslaunch vins vins_rviz.launch
+    rosrun vins vins_node ~/catkin_ws/src/VINS-Fusion/config/realsense_d435i/realsense_stereo_imu_config.yaml
+    roslaunch realsense2_camera rs_camera.launch
+```
 ## 7. Docker Support
 To further facilitate the building process, we add docker in our code. Docker environment is like a sandbox, thus makes our code environment-independent. To run with docker, first make sure [ros](http://wiki.ros.org/ROS/Installation) and [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) are installed on your machine. Then add your account to `docker` group by `sudo usermod -aG docker $YOUR_USER_NAME`. **Relaunch the terminal or logout and re-login if you get `Permission denied` error**, type:
 ```
